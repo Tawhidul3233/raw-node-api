@@ -1,12 +1,14 @@
 // dependencies
 const http = require('http');
+const { handelReqRes } = require('./helpers/handelReqRes');
+
 
 // app object - module scaffolding
 const app = {};
 
 // configuration
 app.config = {
-  port: 5000,
+  port: 9000,
 };
 
 // create server 
@@ -18,9 +20,7 @@ app.createServer = () => {
 }
 
 // handel req res 
-app.handelReqRes = (req, res) => {
-  res.end('Hello wold')
-}
+app.handelReqRes = handelReqRes;
 
-// invokd funcation 
+// start server 
 app.createServer();
