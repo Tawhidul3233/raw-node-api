@@ -1,15 +1,32 @@
 // dependencies
 const http = require('http');
 const { handelReqRes } = require('./helpers/handelReqRes');
+const data = require('./lib/data')
+// const environments = require('./helpers/environments');
 
 
 // app object - module scaffolding
 const app = {};
 
-// configuration
+
+// make data 
+const newUser = {
+  name: 'Akash',
+  age: 55
+}
+// write data to server
+data.create('test', 'newFile', newUser, (err) => {
+  console.log(err)
+})
+
 app.config = {
-  port: 9000,
-};
+  port: 5000,
+}
+// app.production = {
+//   port: 9000,
+//   envName: 'production'
+// }
+
 
 // create server 
 app.createServer = () => {

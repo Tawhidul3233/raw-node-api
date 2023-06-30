@@ -29,16 +29,7 @@ helpers.handelReqRes = (req, res) => {
 
   const chosenHandler = routes[trimPath] ? routes[trimPath] : notFoundHandler;
 
-  chosenHandler(requestProperties, (statusCode, payload)=>{
-    statusCode = typeof statusCode === 'number' ? statusCode : 500;
-    payload = typeof payload === 'object' ? payload : {};
-
-    const payloadString = JSON.stringify(payload);
-
-    res.writeHead(statusCode);
-    res.end(payloadString);
-
-  })
+  
 
   req.on('data', (buffer) => {
     realData += decoder.write(buffer);
@@ -46,8 +37,22 @@ helpers.handelReqRes = (req, res) => {
 
   req.on('end', () => {
     realData += decoder.end();
-    console.log(realData);
-    res.end('Hello wold');
+
+    chosenHandler(requestProperties, (statusCode, payload)=>{
+      statusCode = typeof statusCode === 'number' ? statusCode : 500;
+      payload = typeof payload === 'object' ? payload : {};
+  
+      const payloadString = JSON.stringify(payload);
+  
+      res.writeHead(statusCode);
+      res.end(payloadString);
+  
+    })
+    
+    // console.log(realData);
+
+
+    
   })
 
 }
