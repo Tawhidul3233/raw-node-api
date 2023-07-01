@@ -15,13 +15,22 @@ const newUser = {
   age: 55
 }
 // write data to server
-data.create('test', 'newFile', newUser, (err) => {
-  console.log(err)
-})
+// data.create('test', 'newFile', newUser, (err) => {
+//   console.log(err)
+// });
+
+// read data to server
+data.read('test', 'newFile', (err, data) => {
+  console.log(err, data)
+});
+
+
+
 
 app.config = {
   port: 5000,
-}
+};
+
 // app.production = {
 //   port: 9000,
 //   envName: 'production'
