@@ -4,7 +4,7 @@ const url = require('url');
 const routes = require('../routes');
 const {notFoundHandler} = require('../handlers/routeHandlers/notFoundHandler');
 
-// module scaffolding
+// module scaffolding 
 const helpers = {};
 
 helpers.handelReqRes = (req, res) => {
@@ -44,6 +44,7 @@ helpers.handelReqRes = (req, res) => {
   
       const payloadString = JSON.stringify(payload);
   
+      res.setHeader('Content-Type', 'application/json')
       res.writeHead(statusCode);
       res.end(payloadString);
   

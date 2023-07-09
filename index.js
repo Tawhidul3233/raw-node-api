@@ -15,9 +15,9 @@ const newUser = {
   age: 55
 }
 // write data to server
-// data.create('test', 'newFile', newUser, (err) => {
-//   console.log(err)
-// });
+data.create('test', 'newFile', newUser, (err) => {
+  console.log(err)
+});
 
 // read data to server
 // data.read('test', 'newFile', (err, data) => {
@@ -30,9 +30,9 @@ const newUser = {
 // });
 
 // delete data from server
-data.delete('test', 'newFile', (err) => {
-  console.log(err)
-})
+// data.delete('test', 'newFile', (err) => {
+//   console.log(err)
+// })
 
 
 app.config = {
